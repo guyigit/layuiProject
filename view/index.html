@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人首页</title>
+    <script type="text/javascript" src="../source/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../source/layui/css/layui.css">
+    <style type="text/css">
+        #bodyHtml{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+
+    <div class="layui-layout layui-layout-admin">
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <div class="layui-header">
+            <div class="layui-logo"><h1><a href="./home.html">学无止境</a></h1></div>
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item layui-this" name="mylearn"><a href="javascript:;">技术档案</a></li>
+                <li class="layui-nav-item" name="projectDemo"><a href="javascript:;">项目Demo</a></li>
+                <li class="layui-nav-item"><a href="javascript:;">项目#</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其它项目#</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">列表A</a></dd>
+                        <dd><a href="javascript:;">列表B</a></dd>
+                        <dd><a href="javascript:;">列表C</a></dd>
+                    </dl>
+                </li>
+            </ul>
+            <!--登陆信息-->
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="../source/images/guyi.jpg" class="layui-nav-img">古逸
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">基本资料</a></dd>
+                        <dd><a href="javascript:;">安全设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">退了</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                    <!--列表默认打开：layui-nav-itemed-->
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">html5-Demo</a>
+                        <dl class="layui-nav-child">
+                            <dd><a class="menuBtn" href="./html5/audio.html">音频</a></dd>
+                            <dd><a class="menuBtn" href="./html5/video.html">视频</a></dd>
+                            <dd><a class="menuBtn" href="./html5/tuofang.html">拖放</a></dd>
+                            <dd><a class="menuBtn" href="./html5/canvas.html">画布</a></dd>
+                            <!--<dd><a href="">超链接</a></dd>-->
+                        </dl>
+                    </li>
+                    <!--列表默认关闭-->
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">layui-Demo</a>
+                        <dl class="layui-nav-child">
+                            <dd><a class="menuBtn" href="./layui/carousel.html">轮播图</a></dd>
+                            <dd><a class="menuBtn" href="./layui/timeline.html">时间线</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item"><a href="">列表C</a></li>
+                    <li class="layui-nav-item"><a href="">列表D</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 内容主体区域 -->
+        <div class="layui-body">
+            <!--<div style="padding: 15px;">内容主体区域</div>-->
+            <iframe id="bodyHtml" src=""></iframe>
+        </div>
+
+        <!-- 底部固定区域 -->
+        <div class="layui-footer">
+            © layui.com - 底部固定区域
+        </div>
+    </div>
+
+    <script src="../source/layui/layui.js"></script>
+    <script>
+        layui.use(['carousel','element'], function(){
+            var carousel = layui.carousel;
+            var element = layui.element;
+            //建造实例
+            carousel.render({
+                elem: '#test1'
+                ,width: '100%' //设置容器宽度
+                ,height: '350px'
+                ,arrow: 'always' //始终显示箭头
+                //,anim: 'updown' //切换动画方式
+                ,interval: 3000
+            });
+        });
+        $(function () {
+//            $(".layui-nav-item").click(function (ev) {
+//                var name = $(this).attr("name");
+//                if(name=="mylearn"){
+//                    window.location.href = "./index.html";
+//                }
+//            });
+            $(".menuBtn").click(function (ev) {
+                ev.preventDefault();//阻止浏览器默认事件
+                var url = $(this).attr("href");
+                $("#bodyHtml").attr("src",url);
+            });
+        });
+    </script>
+</body>
+</html>

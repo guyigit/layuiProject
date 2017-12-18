@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <link rel="stylesheet" href="../../source/layui/css/layui.css">
+</head>
+<body>
+    <!--轮播组件-->
+    <div class="layui-carousel" id="test1">
+        <div carousel-item>
+            <div><img src="../../source/images/SC01.jpg"></div>
+            <div><img src="../../source/images/SC02.jpg"></div>
+            <div><img src="../../source/images/SC03.jpg"></div>
+            <div><img src="../../source/images/SC04.jpg"></div>
+        </div>
+    </div>
+
+    <script src="../../source/layui/layui.js"></script>
+    <script>
+        layui.use('carousel', function(){
+            var carousel = layui.carousel;
+            //建造实例
+            carousel.render({
+                elem: '#test1'
+                ,width: '100%'      //设置容器宽度
+                ,height: '350px'
+                ,arrow: 'always'    //始终显示箭头
+                //,anim: 'updown'   //切换动画方式
+                ,interval: 3000     //轮播延时
+            });
+        });
+        $(function () {
+
+        });
+    </script>
+</body>
+</html>

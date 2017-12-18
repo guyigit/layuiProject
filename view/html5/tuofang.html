@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5拖放</title>
+    <style>
+        #div1{
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+        }
+        #drag1{
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    <script>
+        function allowDrop(ev) {
+//            ev.stopPropagation();//阻止冒泡？
+            ev.preventDefault();//阻止浏览器默认事件
+            return false;
+        }
+        //拖动
+        function drag(ev) {
+            ev.dataTransfer.setData("Text",ev.target.id)
+        }
+        //放置
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</head>
+<body>
+    <p>请拖动图片</p>
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+    </div>
+    <img id="drag1" src="../../source/images/SC01.jpg" draggable="true" ondragstart="drag(event)">
+
+</body>
+</html>
